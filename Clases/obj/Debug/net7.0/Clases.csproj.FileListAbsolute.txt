@@ -1,0 +1,12 @@
+D:\ISTEA\2023\Objetos 2023\FinalPOO\Clases\bin\Debug\net7.0\Clases.deps.json
+D:\ISTEA\2023\Objetos 2023\FinalPOO\Clases\bin\Debug\net7.0\Clases.dll
+D:\ISTEA\2023\Objetos 2023\FinalPOO\Clases\bin\Debug\net7.0\Clases.pdb
+D:\ISTEA\2023\Objetos 2023\FinalPOO\Clases\obj\Debug\net7.0\Clases.csproj.AssemblyReference.cache
+D:\ISTEA\2023\Objetos 2023\FinalPOO\Clases\obj\Debug\net7.0\Clases.GeneratedMSBuildEditorConfig.editorconfig
+D:\ISTEA\2023\Objetos 2023\FinalPOO\Clases\obj\Debug\net7.0\Clases.AssemblyInfoInputs.cache
+D:\ISTEA\2023\Objetos 2023\FinalPOO\Clases\obj\Debug\net7.0\Clases.AssemblyInfo.cs
+D:\ISTEA\2023\Objetos 2023\FinalPOO\Clases\obj\Debug\net7.0\Clases.csproj.CoreCompileInputs.cache
+D:\ISTEA\2023\Objetos 2023\FinalPOO\Clases\obj\Debug\net7.0\Clases.dll
+D:\ISTEA\2023\Objetos 2023\FinalPOO\Clases\obj\Debug\net7.0\refint\Clases.dll
+D:\ISTEA\2023\Objetos 2023\FinalPOO\Clases\obj\Debug\net7.0\Clases.pdb
+D:\ISTEA\2023\Objetos 2023\FinalPOO\Clases\obj\Debug\net7.0\ref\Clases.dll

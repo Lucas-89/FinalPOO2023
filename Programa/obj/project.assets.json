@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "Clases/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Clases.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Clases.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "Clases/1.0.0": {
+      "type": "project",
+      "path": "../Clases/Clases.csproj",
+      "msbuildProject": "../Clases/Clases.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "Clases >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Lucas\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\ISTEA\\2023\\Objetos 2023\\FinalPOO\\Clases\\Clases.csproj": {
+              "projectPath": "D:\\ISTEA\\2023\\Objetos 2023\\FinalPOO\\Clases\\Clases.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

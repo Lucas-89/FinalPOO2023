@@ -16,8 +16,8 @@ public abstract class Paciente{
     // 2. Debe contener un método MostrarDatosPersonales que devuelve un string con los datos 
     //      del paciente. Este método debe dar la posibilidad a clases derivadas de dar un nuevo 
     //      comportamiento si se requiere.
-    public virtual string MostrarDatosPersonales(string nombre, string apellido, int dni){
-        return ("Paciente: " + nombre + " " + apellido+ ", DNI: "+ dni );
+    public virtual string MostrarDatosPersonales(){
+        return ("Paciente: " + this.Nombre + " " + this.Apellido+ ", DNI: "+ this.DNI );
     }
     
     // Un método Pagar que devuelve un valor del tipo double y recibe el parámetro costo del tipo double. 
@@ -43,6 +43,12 @@ public class PacienteSinCobertura : Paciente
     public PacienteSinCobertura(string nombre, string apellido, int dni) : base(nombre, apellido, dni)
     {
     }
+    public override string MostrarDatosPersonales()
+    {
+        return base.MostrarDatosPersonales();
+    }
+
+    // y en el método Pagar devolverá el costo (ya que no tiene ningún tipo de descuento)
 
 // y en el método Pagar devolverá el costo (ya que no tiene ningún tipo de descuento)
     public override double Pagar(double Costo)
@@ -63,9 +69,19 @@ public class PacienteConCobertura : Paciente{
 // el paciente debe abonar 75.
     public override double Pagar(double Costo)
     {
-        double descuento = Costo * (ObraSocial.Porcentaje /100);
-        return (Costo - descuento);
+        double procentajeDescuento =this.ObraSocial.Porcentaje;
+        double descuento = (Costo * ( procentajeDescuento/100));
+        double costoFinal = (Costo - descuento);
+        return costoFinal;
     }
+
+    public override string MostrarDatosPersonales()
+    {
+        return base.MostrarDatosPersonales();
+    }
+
+
+
 }
 // 7. La clase Nomenclador tiene las propiedades Diagnostico (string) y Costo (double), ambas deben 
 // ser inicializadas en el constructor.
@@ -91,33 +107,64 @@ public class Internacion{
     public Paciente PacienteInternado{get;set;}
     public Nomenclador NomencladorInternado{get;set;}
 }
+
+
 // 9. La clase Hospital debe tener una lista del tipo Internacion. Una propiedad Cantidad(int). 
 public class Hospital{
     private List<Internacion> ListaInternados = new List<Internacion>();
     public int Cantidad{get;set;}
-// 10. Un método Internar que no devuelve valores, recibe un Paciente y un Nomenclador. 
+    // 10. Un método Internar que no devuelve valores, recibe un Paciente y un Nomenclador. 
     // Debe agregar hasta la Cantidad (propiedad) permitida. Si supera el número de internados 
     // posibles debe lanzar una excepción “No hay más lugar”. En caso contrario agregar a la lista 
     // de internados.
 
     public void Internar(Paciente pac, Nomenclador nom){
-        if (!(ListaInternados.Count >= Cantidad))
+        if (!(ListaInternados.Count >= Cantidad))                   //mientras la cantidad en la lista sea menor a la cantidad maxima
         {
             Internacion nuevaInternacion = new Internacion(pac,nom);
             ListaInternados.Add(nuevaInternacion);
+        }else{                                                      //si es mayor se lanza la excepcion    
+            throw new Exception ("La lista de pacientes esta llena");
         }
     }
-// 11. Un método Facturar que recibe un string con la obra social. Este método debe imprimir 
+
+
+    // public void Internar(Internacion inter){
+    //     if (!(ListaInternados.Count<= Cantidad))
+    //     {
+    //         ListaInternados.Add(inter);
+    //     }else{
+    //         throw new Exception ("Lista de pacientes completa");
+    //     }
+    // }
+
+
+
+
+    // 11. Un método Facturar que recibe un string con la obra social. Este método debe imprimir 
     // en pantalla los Pacientes que pertenezcan a la obra social que fue pasada por parámetro.
     public void Facturar(string nombreOS){
-        System.Console.WriteLine("Obra Social: " + nombreOS);
+        Console.WriteLine("Obra Social: " + nombreOS);
+        Console.WriteLine();
+        
         foreach (var item in ListaInternados)
         {
-            var pacienteAChequear = item.PacienteInternado;
-            if (pacienteAChequear is PacienteConCobertura pacienteConCobertura && pacienteConCobertura.ObraSocial.Nombre == nombreOS )
+            if (item.PacienteInternado.GetType() == typeof(PacienteConCobertura))
             {
-                System.Console.WriteLine(pacienteAChequear.MostrarDatosPersonales);
+                var pacienteCubierto = (PacienteConCobertura)item.PacienteInternado;
+                if (pacienteCubierto.ObraSocial.Nombre ==nombreOS)
+                {
+                    
+                    System.Console.WriteLine(pacienteCubierto.MostrarDatosPersonales());
+                    System.Console.WriteLine("Diagnostico: " + item.NomencladorInternado.Diagnostico);
+                    System.Console.WriteLine("Costo del tratamiento: " + pacienteCubierto.Costo);
+                    System.Console.WriteLine("Costo con Cobertura: " + pacienteCubierto.Pagar(pacienteCubierto.Costo));
+                    System.Console.WriteLine("------------------------------");
+                }
             }
         }
     }
+
+    
+
 }
