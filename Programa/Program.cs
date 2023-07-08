@@ -12,7 +12,7 @@ var pacSC1 = new PacienteSinCobertura("German", "Sanchez", 123123);
 pacSC1.Costo= 1000;
 
 var pacSC2 = new PacienteSinCobertura("Luis", "Alvarez", 123456);
-pacSC2.Costo= 3000; //esto lo puedo tomar desde el nomenclador? el costo si, pero el diagnostico no 
+pacSC2.Costo= 3000;  
 #endregion
 
 #region Pacientes Con Cobertura
@@ -67,12 +67,6 @@ try
     hosp1.Internar(pacCO3,nom2);
     hosp1.Internar(pacCO4, nom4);
     hosp1.Internar(pacCO3, nom4);
-
-    // hosp1.Internar(internacion1);
-    // hosp1.Internar(internacion2);
-    // hosp1.Internar(internacion3);
-    // hosp1.Internar(internacion4);
-    // hosp1.Internar(internacion5);
 }
 catch (Exception ex)
 {
@@ -92,7 +86,7 @@ System.Console.WriteLine("presione una tecla para continuar");
 Console.ReadKey();
 Console.Clear();
 
-System.Console.WriteLine("Pruebo con la obra social Swiss");
+
 System.Console.WriteLine();
 
 hosp1.Facturar(obraSocial2.Nombre);

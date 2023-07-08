@@ -26,7 +26,7 @@ public abstract class Paciente{
 }
 
 // 4. La clase ObraSocial que contiene las propiedades Nombre (string) y Porcentaje (int) que 
-// deben ser inicializadas en el constructor.
+//      deben ser inicializadas en el constructor.
 
 public class ObraSocial{
     public ObraSocial(string nombre, int porcentaje){
@@ -34,7 +34,7 @@ public class ObraSocial{
         this.Porcentaje = porcentaje;
     }
     public string Nombre{get;set;}
-    public int Porcentaje{get;set;} // entiendo que deberia ser double
+    public int Porcentaje{get;set;} 
 
 }
 // 5. La clase PacienteSinCobertura hereda de Paciente
@@ -48,8 +48,7 @@ public class PacienteSinCobertura : Paciente
         return base.MostrarDatosPersonales();
     }
 
-    // y en el método Pagar devolverá el costo (ya que no tiene ningún tipo de descuento)
-
+   
 // y en el método Pagar devolverá el costo (ya que no tiene ningún tipo de descuento)
     public override double Pagar(double Costo)
     {
@@ -57,7 +56,7 @@ public class PacienteSinCobertura : Paciente
     }
 }
 // 6. La clase PacienteConCobertura hereda de Paciente y contiene una propiedad del tipo 
-// ObraSocial que deber ser inicializada en el constructor
+//       ObraSocial que deber ser inicializada en el constructor
 public class PacienteConCobertura : Paciente{
     public PacienteConCobertura(string nombre, string apellido, int dni, ObraSocial obra): base(nombre, apellido, dni){
         this.ObraSocial = obra;
@@ -65,8 +64,8 @@ public class PacienteConCobertura : Paciente{
     public ObraSocial ObraSocial{get;set;}
 
 // En el método Pagar debe devolver el valor que debe abonar el paciente teniendo en cuenta 
-// el porcentaje de descuento de la obra social. Ej Porcentaje 50 %, el costo es 150 entonces 
-// el paciente debe abonar 75.
+//      el porcentaje de descuento de la obra social. Ej Porcentaje 50 %, el costo es 150 entonces 
+//      el paciente debe abonar 75.
     public override double Pagar(double Costo)
     {
         double procentajeDescuento =this.ObraSocial.Porcentaje;
@@ -84,7 +83,7 @@ public class PacienteConCobertura : Paciente{
 
 }
 // 7. La clase Nomenclador tiene las propiedades Diagnostico (string) y Costo (double), ambas deben 
-// ser inicializadas en el constructor.
+//      ser inicializadas en el constructor.
 public class Nomenclador{
     public Nomenclador(string diagnostico, double costo){
         this.Diagnostico = diagnostico;
@@ -98,7 +97,7 @@ public class Nomenclador{
     }
 }
 // 8. La clase Internacion que contiene un Paciente y un Nomenclador que deben ser inicializados 
-// en el constructor. 
+//      en el constructor. 
 public class Internacion{
     public Internacion(Paciente pac, Nomenclador nomenclador){
         this.PacienteInternado = pac;
@@ -123,25 +122,14 @@ public class Hospital{
         {
             Internacion nuevaInternacion = new Internacion(pac,nom);
             ListaInternados.Add(nuevaInternacion);
+            System.Console.WriteLine("Paciente agregado");
         }else{                                                      //si es mayor se lanza la excepcion    
-            throw new Exception ("La lista de pacientes esta llena");
+            throw new Exception ("La lista de pacientes esta llena. Cantidad de pacientes: " + Cantidad);
         }
     }
 
 
-    // public void Internar(Internacion inter){
-    //     if (!(ListaInternados.Count<= Cantidad))
-    //     {
-    //         ListaInternados.Add(inter);
-    //     }else{
-    //         throw new Exception ("Lista de pacientes completa");
-    //     }
-    // }
-
-
-
-
-    // 11. Un método Facturar que recibe un string con la obra social. Este método debe imprimir 
+     // 11. Un método Facturar que recibe un string con la obra social. Este método debe imprimir 
     // en pantalla los Pacientes que pertenezcan a la obra social que fue pasada por parámetro.
     public void Facturar(string nombreOS){
         Console.WriteLine("Obra Social: " + nombreOS);
